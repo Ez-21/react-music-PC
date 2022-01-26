@@ -1,0 +1,115 @@
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
+}
+.homeBox {
+	margin: 0 auto;
+	// width: 85%;
+  width: 100%;
+	height: auto;
+	background-color: yellowgreen;
+}
+.loginBox{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input{
+      margin-bottom:20px ;
+      height: 44px;
+      width: 100% !important;
+    }
+  }
+  button{
+    width: 80%;
+    height: 40px;
+  }
+}
+.ant-modal-confirm-btns button{
+  width: 80% !important;
+  height: 40px !important;
+}
+.homeTop {
+	display: flex;
+	align-items: center;
+  justify-content: space-between;
+	width: 100%;
+  height: 80px;
+  padding: 0 10%;
+	background-color: white;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  .homeToptitle{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    div{
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    div:hover{
+      color:#1890ff;
+    }
+    .ckdiv{
+      background-color:  #1890ff;
+      color: white;
+    }
+  }
+  .homeTopSet{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 28%;
+    height: 100%;
+  }
+  .userHeadImg{
+    img{
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+  }
+}
+.modalTitle{
+  margin: 0 auto;
+  margin-top: 35px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+  cursor: pointer;
+}
+.homeHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20%;
+  height: 50px;
+  background-color: white;
+  div{
+    cursor: pointer;
+  }
+  div:hover{
+    color: #1890ff;
+  }
+}
+.outlet{
+  position: relative;
+  padding: 0 12%;
+  padding-bottom: 30px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+}

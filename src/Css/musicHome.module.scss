@@ -1,0 +1,66 @@
+.musicbox{
+
+}
+
+.listbox{
+  padding: 20px 0;
+  .title{
+    text-align: center;
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing: 8px;
+  }
+  .tags{
+    width: 72%;
+    margin: 35px  auto;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    span:hover{
+      color: #1890ff;
+    }
+  }
+  .rgion{
+    @extend .tags;
+    width: 35% !important;
+    
+  }
+  .TagBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div{
+      width: 217px;
+      height: 280px;
+      cursor: pointer;
+      img{
+        width: 100%;
+        height: 240px;
+        object-fit: contain;
+      }
+      span{
+        font-size: 13px;
+        color: #999;
+      }
+    }
+  }
+}
+.swiperBox{
+  width: 100%;
+  height: 200px;
+    .swiperdiv{
+      display: flex;
+      justify-content: space-between;
+      
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      background-color: green;
+      div{
+        width: 400px;
+        height: 86px;
+        background: gold;
+      }
+    }
+}
