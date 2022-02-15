@@ -1,28 +1,35 @@
-import react, { useEffect, useState } from "react";
+import react, { useCallback, useEffect, useLayoutEffect, useState,useRef} from "react";
 import { useNavigate } from "react-router-dom";
-import { MusicTbale, MusicTbaleList, SongList } from "../api/musichome";
+import { MusicTbale, MusicTbaleList, SongList,Banner } from "../api/musichome";
 import { Carousel } from "antd";
 import styles from "../Css/musicHome.module.scss";
 export default function () {
+	const mouted = useRef(true);
 	const [singTableTag, setSingTableTag] = useState([]);
 	const [oneList, SetOneList] = useState([]);
 	const [TenList,setTenList] = useState([])
+	const [bannerList,setBannerList] = useState([])
 	const contentStyle = {
+		width:'100%',
 		height: '400px',
 		color: '#fff',
-		lineHeight: '160px',
-		textAlign: 'center',
-		background: '#364d79',
 		display:'flex',
 		flexWrap:'wrap',
 		justifyContent:'space-between',
-		div:{
+		// background:'#fff',
+		h3InnerBox:{
 			display:'flex',
-			justifyContent:'space-between',
 			alignItems: 'center',
-			width:'400px',
-			height:'100px',
+			padding:'0 20px 0 0 ',
+			width:'30%',
+			height:'95px',
 			background: '#fff',
+			color:'#000',
+			fontSize:'13px',
+			whiteSpace: 'nowrap',
+			overflow:'hidden',
+  		cursor: 'pointer',
+			borderRadius:'9px'
 		},
 	};
 	const region = [
@@ -57,6 +64,15 @@ export default function () {
 			return num;
 		}
 	}
+	// banner图
+	const banner = ()=>{
+		Banner().then(({data}) => {
+			console.log(data,'banner');
+			setBannerList(data.banners)
+		}).catch((err) => {
+			
+		});
+	}
 	// 热门歌单
 	const singTable = () => {
 		MusicTbale()
@@ -82,24 +98,45 @@ export default function () {
 			})
 			.catch((err) => {});
 	};
-	const quickSong = () => {
-		SongList()
-			.then(({ data }) => {
+	const quickSong = async (id) => {
+		return new Promise(res=>{
+			if(TenList.length!=0){
+				setTenList([])
+			}
+			SongList(id).then(({ data }) => {
 				for(let i = 0;i<data.data.length;i++){
 					TenList[i]=data.data.splice(0,9)
 				}
-				setTenList(TenList)
-				console.log(TenList ,'?');
+				if(mouted.current){
+						setTenList(TenList)
+					}
+				console.log(TenList ,'TenList');
 			})
-			.catch((err) => {});
+			.catch((err) => {})
+		}) 
 	};
+	const newSongs = (value)=>{
+		quickSong(value.id);
+	}
 	useEffect(() => {
+		banner();
+		quickSong();
 		singTable();
 		singTableCk();
-		quickSong();
 	}, []);
 	return (
 		<div className={styles.musicbox}>
+			<div className={styles.listbox}>
+			<Carousel autoplay>
+				{
+					bannerList.map(item=>(
+						<div key={item.id}>
+								<img src={item.imageUrl} alt="" style={{width:'100%'}}/>
+						</div>
+					))
+				}
+			</Carousel>
+			</div>
 			<div className={styles.listbox}>
 				<div className={styles.title}>歌单推荐</div>
 				<div className={styles.tags}>
@@ -129,30 +166,37 @@ export default function () {
 				<div className={styles.title}>新歌速递</div>
 				<div className={styles.rgion}>
 					{area.map((item, index) => (
-						<span key={item.name} onClick={() => {}}>
+						<span key={item.name} onClick={() => {newSongs(item)}}>
 							{item.name}
 						</span>
 					))}
 				</div>
 				<div className={styles.swiperBox}>
-					<Carousel autoplay>
-						{/* <div>
-							<h3 style={contentStyle}>1</h3>
-						</div> */}
-						{TenList.length != 0 &&
-							TenList.map((item,index)=> {
-								<div key={item[0].id}>
-									{
-										TenList[index].map(item=>{
-											<h3 style={contentStyle}>
-												<div style={contentStyle.div}>
-													<img src={item.album.picUrl} alt="" style={{'width':'86px','height':'86px'}}/>
+					<Carousel >
+						{
+							TenList&&TenList.length!=0&&TenList.map((item,index)=> (
+								<div key={index + 'a'}>
+									<h3 style={contentStyle} >
+										{
+											TenList[index]&&TenList[index].map(items => (
+												<div key={items.name} style={contentStyle.h3InnerBox}> 
+													<img src={items.album.picUrl} alt="" style={{ 'width': '86px', 'height': '100%','marginRight':'7px' }} />
+													<div style={{'display':'flex','flexDirection':'column',}}>
+														<p>
+															{items.name}
+														</p>
+														<p>
+															{items.artists.map(vals=>(
+																<span style={{'color':'#999','fontSize':'12px','marginRight':'4px'}} key={vals.name}>{vals.name},</span>
+															))}
+														</p>
+													</div>
 												</div>
-											</h3>
-										})
-									}
+											))
+										}
+									</h3>
 								</div>
-							})
+							))
 						}
 					</Carousel>
 				</div>

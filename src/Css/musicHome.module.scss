@@ -5,6 +5,7 @@
 .listbox{
   padding: 20px 0;
   .title{
+    margin-top: 35px;
     text-align: center;
     font-size: 27px;
     font-weight: 500;
@@ -49,18 +50,4 @@
 .swiperBox{
   width: 100%;
   height: 200px;
-    .swiperdiv{
-      display: flex;
-      justify-content: space-between;
-      
-      flex-wrap: wrap;
-      width: 100%;
-      height: 100%;
-      background-color: green;
-      div{
-        width: 400px;
-        height: 86px;
-        background: gold;
-      }
-    }
 }

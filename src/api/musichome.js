@@ -1,11 +1,22 @@
+import axios from 'axios'
 import request from '../axios/axios'
+
+export function Banner(params){
+  return request({
+    url:'/banner',
+    method:'get',
+    params:{
+      type:0
+    }
+  })
+}
+
 export function MusicTbale(){
   return request({
     url:'/playlist/hot',
     method:'GET'
   })
 }
-
 
 export function MusicTbaleList(cat){
   return request({
@@ -24,7 +35,13 @@ export function SongList(id){
     url:'/top/song',
     method:'GET',
     params:{
-      type:id||96
+      type:id||7
     }
+  })
+}
+export function SongRealTime(params){
+  return request({
+    url:'/search/suggest',
+    params
   })
 }

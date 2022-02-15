@@ -1,0 +1,126 @@
+
+.songsList {
+	width: 100%;
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #fff;
+  .uls {
+    list-style: none;
+    padding: 0 !important;
+    li{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      background-color: #fff;
+      margin-bottom: 1px;
+      font-size: 13px;
+      white-space: nowrap;
+      .songs{
+        color: #1890FF;
+      }
+      .mv{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 3px;
+        width: 33px;
+        height: 16px;
+        font-size: 10px;
+        border: 1px solid #1890FF;
+        vertical-align: middle;
+        color: #1890FF;
+        border-radius: 3px;
+      }
+      span:hover,div:hover{
+          cursor: pointer;
+          color: #1890FF;
+      }
+      div{
+        width: 150px;
+      }
+    }
+  }
+	.inpReal {
+		position: relative;
+	}
+	.songsSearch {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 250px;
+		background-color: cyan;
+		background: url("../public/img/rain.jpg") no-repeat;
+    background-attachment: fixed;
+		background-position: -100px;
+		.inputBox {
+			z-index: 2;
+			padding: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 640px;
+			height: 46px;
+			border-radius: 5px;
+			background-color: #fff;
+			input {
+				width: 95%;
+				height: 100%;
+				border: none;
+				outline: none;
+			}
+			img {
+				cursor: pointer;
+				width: 26px;
+				height: 26px;
+			}
+		}
+	}
+}
+.searchList {
+  --delay: .6s;
+	position: absolute;
+	top: 44px;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+  max-height: 0px;
+  visibility: hidden;
+  transition: max-height var(--delay) linear, visibility .5s var(--delay);
+  overflow: hidden;
+  will-change: max-height, visibility;
+  z-index: 10;
+  border: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+	&.showSearchList {
+    max-height: 800px;
+    visibility: visible;
+    transition: max-height var(--delay) linear;
+	}
+}
+.ListBox {
+	padding: 0 15%;
+	width: 100%;
+	height: 100%;
+	.Title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 50px;
+		cursor: pointer;
+    span{
+      width: 150px;
+    }
+	}
+}
+.pages{
+  margin: 30px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  // float: right;
+}

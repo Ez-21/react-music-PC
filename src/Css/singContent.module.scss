@@ -1,0 +1,121 @@
+.singBox{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  // backdrop-filter:10px;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.35);
+  z-index: 2;
+}
+.bgbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  filter: blur(55px);
+  z-index:-1;
+  background-size: 100% 100%;
+}
+.singTop{
+  margin-top: 100px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 35%;
+  .left{
+    width: 400px;
+    height: 400px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+  .right{
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+    color: hsla(0,0%,88.2%,.8);
+  }
+}
+.singBottom{
+  display: flex;
+  width: 100%;
+  height: 60px;
+}
+.innerBottom{
+  @extend .flex;
+  padding: 0 50px;
+  position: fixed;
+  left: 0;
+  bottom: 80px;
+  width: 100%;
+  height: 40px;
+  .control{
+    @extend .flex;
+    width: 200px;
+    height: 100%;
+    div{
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+    }
+    .up{
+      background: url('../public/img/control.png')no-repeat ;
+      background-position: 1px -29px;
+    }
+    .play{
+      width: 27px;
+      height: 28px;
+      background: url('../public/img/control.png') no-repeat;
+    }
+    .down{
+        background: url('../public/img/control.png')no-repeat ;
+        background-position: 0px -50px;
+    }
+  }
+  .progress{
+    width: 650px;
+    height: 10px;
+  }
+  .liner{
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: hsla(0,0%,100%,.2);
+    cursor: pointer;
+    border-radius:5px;
+  }
+  .circle{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+audio{
+  width: 0px;
+  height: 0px;
+}
